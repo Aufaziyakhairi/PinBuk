@@ -32,7 +32,7 @@
                     </div>
 
                     <!-- Return Form -->
-                    <form method="POST" action="{{ route('borrowings.update', $borrowing) }}" class="border-t border-gray-200 dark:border-gray-700 pt-6">
+                    <form method="POST" action="{{ route('borrowings.update', $borrowing) }}" class="border-t border-gray-200 dark:border-gray-700 pt-6" data-confirm="Apakah Anda yakin ingin mengembalikan buku ini?">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="status" value="returned">
@@ -64,8 +64,7 @@
                         <!-- Buttons -->
                         <div class="flex items-center gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
                             <button type="submit" 
-                                    class="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 px-4 rounded-lg transition shadow-sm hover:shadow-md"
-                                    onclick="return confirm('Apakah Anda yakin ingin mengembalikan buku ini?')">
+                                    class="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 px-4 rounded-lg transition shadow-sm hover:shadow-md">
                                 ✓ Kembalikan Buku
                             </button>
                             <a href="{{ route('borrowings.show', $borrowing) }}" class="flex-1 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 text-gray-900 dark:text-white font-semibold py-3 px-4 rounded-lg transition text-center">

@@ -25,91 +25,212 @@
                 
                 @if($pendingBorrowings->isNotEmpty())
                     <!-- Alert Banner -->
-                    <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/30 dark:to-orange-900/30 border-l-4 border-red-500 rounded-lg p-5 flex items-center justify-between">
+                    <div class="bg-gradient-to-r from-amber-50 via-red-50 to-orange-50 dark:from-amber-900/20 dark:via-red-900/20 dark:to-orange-900/20 border-l-4 border-red-500 rounded-xl p-6 flex items-center justify-between shadow-sm">
                         <div class="flex items-center gap-4">
-                            <div class="text-3xl">🔔</div>
+                            <div class="text-4xl animate-bounce">⏳</div>
                             <div>
-                                <p class="text-sm font-bold text-red-700 dark:text-red-300 uppercase tracking-wider">Persetujuan Diperlukan</p>
-                                <p class="text-red-600 dark:text-red-400 text-sm mt-1">
-                                    Ada <strong class="text-lg">{{ $pendingBorrowings->count() }}</strong> permintaan peminjaman yang menunggu persetujuan Anda.
+                                <p class="text-sm font-bold text-red-700 dark:text-red-300 uppercase tracking-wider">Persetujuan Menunggu</p>
+                                <p class="text-red-600 dark:text-red-400 text-base mt-1">
+                                    Anda memiliki <strong class="text-lg font-extrabold text-red-700 dark:text-red-300">{{ $pendingBorrowings->count() }}</strong> permintaan yang perlu ditinjau
                                 </p>
                             </div>
                         </div>
-                        <span class="inline-flex items-center gap-1 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full animate-pulse">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            {{ $pendingBorrowings->count() }}
-                        </span>
+                        <div class="flex flex-col items-center">
+                            <span class="inline-flex items-center gap-1 px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white text-sm font-bold rounded-full shadow-md">
+                                <span class="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></span>
+                                Butuh Aksi
+                            </span>
+                        </div>
                     </div>
 
                     <!-- Approval Cards -->
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden">
-                        <div class="px-6 py-5 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 border-b border-gray-200 dark:border-gray-700">
-                            <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
-                                <span class="text-lg">⏳</span> Permintaan Menunggu Persetujuan
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                        <div class="px-8 py-6 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                            <h3 class="text-base font-bold text-gray-900 dark:text-white uppercase tracking-widest flex items-center gap-3">
+                                <span class="text-2xl">📋</span> 
+                                <span>Permintaan Peminjaman Baru</span>
+                                <span class="ml-2 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">{{ $pendingBorrowings->count() }}</span>
                             </h3>
                         </div>
-                        <div class="grid gap-4 p-6">
+                        
+                        <div class="grid gap-4 p-6 lg:p-8 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-800/50">
                             @foreach($pendingBorrowings as $borrowing)
-                                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg p-5 hover:shadow-md transition">
-                                    <!-- Info Grid -->
-                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                                        <div>
-                                            <p class="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">📚 Buku</p>
-                                            <p class="font-semibold text-gray-900 dark:text-white">{{ $borrowing->book->title }}</p>
-                                            <p class="text-xs text-gray-600 dark:text-gray-400 mt-0.5">✍️ {{ $borrowing->book->author ?? 'Penulis tidak diketahui' }}</p>
+                                <div class="group bg-white dark:bg-gray-700/50 border-2 border-gray-200 dark:border-gray-600 rounded-xl p-6 hover:border-orange-400 dark:hover:border-orange-500 hover:shadow-lg transition-all duration-300" x-data="{ editModal{{ $borrowing->id }}: false }">
+                                    <!-- Header with Book Info -->
+                                    <div class="flex items-start justify-between mb-5 pb-5 border-b border-gray-200 dark:border-gray-600">
+                                        <div class="flex-1">
+                                            <p class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider mb-1">📚 Judul Buku</p>
+                                            <h4 class="text-lg font-bold text-gray-900 dark:text-white">{{ $borrowing->book->title }}</h4>
+                                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Oleh <span class="font-semibold">{{ $borrowing->book->author ?? 'Penulis tidak diketahui' }}</span></p>
                                         </div>
-                                        <div>
-                                            <p class="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">👤 Peminjam</p>
-                                            <p class="font-semibold text-gray-900 dark:text-white">{{ $borrowing->user->name }}</p>
-                                            <p class="text-xs text-gray-600 dark:text-gray-400 mt-0.5">{{ $borrowing->user->email }}</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">📅 Permintaan</p>
-                                            <p class="font-semibold text-gray-900 dark:text-white">{{ $borrowing->created_at->format('d M Y') }}</p>
-                                            <p class="text-xs text-orange-600 dark:text-orange-400 font-bold mt-0.5">{{ $borrowing->created_at->diffForHumans() }}</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">📊 Ketersediaan</p>
-                                            <p class="font-semibold text-green-600 dark:text-green-400">{{ $borrowing->book->available_quantity }}/{{ $borrowing->book->quantity }} tersedia</p>
-                                            <p class="text-xs text-gray-600 dark:text-gray-400 mt-0.5">{{ $borrowing->book->quantity - $borrowing->book->available_quantity }} sedang dipinjam</p>
+                                        <div class="text-right ml-4">
+                                            <span class="inline-block px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold rounded-lg">
+                                                ID: #{{ $borrowing->id }}
+                                            </span>
                                         </div>
                                     </div>
-                                    
+
+                                    <!-- Peminjam & Permintaan Info -->
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+                                        <!-- Peminjam -->
+                                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/10 rounded-lg p-4 border border-blue-200 dark:border-blue-700">
+                                            <p class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider mb-2">👤 Peminjam</p>
+                                            <p class="text-base font-bold text-gray-900 dark:text-white">{{ $borrowing->user->name }}</p>
+                                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">{{ $borrowing->user->email }}</p>
+                                        </div>
+
+                                        <!-- Waktu Permintaan -->
+                                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-900/10 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
+                                            <p class="text-xs font-bold text-purple-700 dark:text-purple-400 uppercase tracking-wider mb-2">📅 Waktu Permintaan</p>
+                                            <p class="text-base font-bold text-gray-900 dark:text-white">{{ $borrowing->created_at->format('d M Y') }}</p>
+                                            <p class="text-sm text-purple-600 dark:text-purple-300 font-semibold mt-1">{{ $borrowing->created_at->diffForHumans() }}</p>
+                                        </div>
+
+                                        <!-- Ketersediaan Buku -->
+                                        <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-900/10 rounded-lg p-4 border border-green-200 dark:border-green-700">
+                                            <p class="text-xs font-bold text-green-700 dark:text-green-400 uppercase tracking-wider mb-2">📊 Ketersediaan</p>
+                                            <p class="text-base font-bold text-gray-900 dark:text-white">
+                                                <span class="text-2xl text-green-600 dark:text-green-400">{{ $borrowing->book->available_quantity }}</span>
+                                                <span class="text-gray-600 dark:text-gray-300">/{{ $borrowing->book->quantity }}</span>
+                                            </p>
+                                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                                                @if($borrowing->book->available_quantity > 0)
+                                                    <span class="text-green-600 dark:text-green-400 font-semibold">✓ Tersedia</span>
+                                                @else
+                                                    <span class="text-red-600 dark:text-red-400 font-semibold">✗ Habis</span>
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+
                                     <!-- Action Buttons -->
-                                    <div class="border-t border-gray-200 dark:border-gray-600 pt-4 flex gap-3">
+                                    <div class="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-600">
+                                        <!-- Approve Button -->
                                         <form method="POST" action="{{ route('borrowings.update', $borrowing) }}" class="flex-1">
                                             @csrf
                                             @method('PUT')
                                             <input type="hidden" name="status" value="approved">
                                             <input type="hidden" name="due_date" value="{{ now()->addDays(7)->format('Y-m-d') }}">
-                                            <button type="submit" class="w-full px-4 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-sm rounded-lg transition flex items-center justify-center gap-2">
-                                                <span>✓</span> Setujui
+                                            <button type="submit" class="w-full px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold text-sm rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:scale-105">
+                                                <span class="text-lg">✓</span> Setujui (7 hari)
                                             </button>
                                         </form>
                                         
-                                        <a href="{{ route('borrowings.edit', $borrowing) }}" class="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-lg transition text-center flex items-center justify-center gap-2">
-                                            <span>⚙️</span> Edit
-                                        </a>
+                                        <!-- Edit Button (Trigger Modal) -->
+                                        <button type="button" @click="editModal{{ $borrowing->id }} = true" class="flex-1 px-4 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold text-sm rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:scale-105">
+                                            <span class="text-lg">⚙️</span> Edit Durasi
+                                        </button>
                                         
-                                        <form method="POST" action="{{ route('borrowings.update', $borrowing) }}" class="flex-1" onsubmit="return confirm('Yakin ingin menolak permintaan ini?')">
+                                        <!-- Reject Button -->
+                                        <form method="POST" action="{{ route('borrowings.update', $borrowing) }}" class="flex-1" data-confirm="Permintaan akan ditolak. Yakin lanjutkan?">
                                             @csrf
                                             @method('PUT')
                                             <input type="hidden" name="status" value="rejected">
-                                            <button type="submit" class="w-full px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-sm rounded-lg transition flex items-center justify-center gap-2">
-                                                <span>✗</span> Tolak
+                                            <button type="submit" class="w-full px-4 py-3 bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 text-white font-bold text-sm rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:scale-105">
+                                                <span class="text-lg">✕</span> Tolak
                                             </button>
                                         </form>
+                                    </div>
+
+                                    <!-- Edit Duration Modal -->
+                                    <div x-show="editModal{{ $borrowing->id }}" class="fixed inset-0 bg-black/50 dark:bg-black/70 z-50 flex items-center justify-center p-4" style="display: none;">
+                                        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full border border-gray-200 dark:border-gray-700" @click.stop>
+                                            <!-- Modal Header -->
+                                            <div class="px-8 py-6 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                                                <h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                                    <span class="text-2xl">⏰</span> Edit Durasi
+                                                </h3>
+                                                <button type="button" @click="editModal{{ $borrowing->id }} = false" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-2xl">
+                                                    ✕
+                                                </button>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <form method="POST" action="{{ route('borrowings.update', $borrowing) }}" class="p-8">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="status" value="approved">
+
+                                                <!-- Book Info -->
+                                                <div class="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-4 mb-6 border border-gray-200 dark:border-gray-600">
+                                                    <p class="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">📚 Buku</p>
+                                                    <p class="text-base font-bold text-gray-900 dark:text-white">{{ $borrowing->book->title }}</p>
+                                                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Peminjam: <strong>{{ $borrowing->user->name }}</strong></p>
+                                                </div>
+
+                                                <!-- Current Due Date -->
+                                                <div class="mb-6">
+                                                    <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">📅 Jatuh Tempo Saat Ini</p>
+                                                    <div class="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-700 rounded-lg p-3">
+                                                        <p class="text-lg font-bold text-orange-700 dark:text-orange-300">
+                                                            @if($borrowing->due_date)
+                                                                {{ $borrowing->due_date->format('d M Y') }}
+                                                            @else
+                                                                Belum ditentukan
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Duration Selection -->
+                                                <div class="mb-6">
+                                                    <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">⏱️ Pilih Durasi Peminjaman</p>
+                                                    <div class="space-y-2">
+                                                        <!-- 3 Days -->
+                                                        <label class="flex items-center p-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:border-blue-400 dark:hover:border-blue-400 transition">
+                                                            <input type="radio" name="due_date" value="{{ now()->addDays(3)->format('Y-m-d') }}" class="w-4 h-4 text-blue-600">
+                                                            <span class="ml-3 text-sm font-semibold text-gray-700 dark:text-gray-300">3 hari - {{ now()->addDays(3)->format('d M Y') }}</span>
+                                                        </label>
+
+                                                        <!-- 7 Days (Standard) -->
+                                                        <label class="flex items-center p-3 border-2 border-blue-500 bg-blue-50 dark:bg-blue-900/20 rounded-lg cursor-pointer transition">
+                                                            <input type="radio" name="due_date" value="{{ now()->addDays(7)->format('Y-m-d') }}" checked class="w-4 h-4 text-blue-600">
+                                                            <span class="ml-3 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                                                7 hari - {{ now()->addDays(7)->format('d M Y') }}
+                                                                <span class="text-xs text-blue-600 ml-1 font-bold">(Standar)</span>
+                                                            </span>
+                                                        </label>
+
+                                                        <!-- 14 Days (Max) -->
+                                                        <label class="flex items-center p-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:border-orange-400 dark:hover:border-orange-400 transition">
+                                                            <input type="radio" name="due_date" value="{{ now()->addDays(14)->format('Y-m-d') }}" class="w-4 h-4 text-blue-600">
+                                                            <span class="ml-3 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                                                14 hari - {{ now()->addDays(14)->format('d M Y') }}
+                                                                <span class="text-xs text-amber-600 ml-1 font-bold">(Max)</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Info -->
+                                                <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-lg p-4 mb-6">
+                                                    <p class="text-sm text-amber-900 dark:text-amber-300">
+                                                        <span class="font-bold">💡 Catatan:</span> Durasi maksimal 14 hari. Denda keterlambatan Rp 5.000/hari.
+                                                    </p>
+                                                </div>
+
+                                                <!-- Buttons -->
+                                                <div class="flex gap-3">
+                                                    <button type="button" @click="editModal{{ $borrowing->id }} = false" class="flex-1 px-4 py-2.5 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 text-gray-800 dark:text-white font-semibold rounded-lg transition">
+                                                        Batal
+                                                    </button>
+                                                    <button type="submit" class="flex-1 px-4 py-2.5 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold rounded-lg transition shadow-md hover:shadow-lg">
+                                                        ✓ Simpan
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
                 @else
-                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-700 rounded-xl p-5 flex items-center gap-4">
-                        <div class="text-3xl">✅</div>
+                    <div class="bg-gradient-to-r from-green-50 via-emerald-50 to-teal-50 dark:from-green-900/20 dark:via-emerald-900/20 dark:to-teal-900/20 border-2 border-green-200 dark:border-green-700 rounded-xl p-6 flex items-center gap-4 shadow-sm">
+                        <div class="text-4xl animate-bounce">✅</div>
                         <div>
-                            <p class="text-sm font-bold text-green-700 dark:text-green-300 uppercase tracking-wider">Semua Terproses</p>
-                            <p class="text-green-600 dark:text-green-400 text-sm mt-1">Semua permintaan peminjaman telah diproses dengan baik.</p>
+                            <p class="text-base font-bold text-green-700 dark:text-green-300 uppercase tracking-wider">Semua Permintaan Terproses</p>
+                            <p class="text-green-600 dark:text-green-400 text-sm mt-1">Tidak ada permintaan peminjaman yang menunggu persetujuan. Bagus sekali! 🎉</p>
                         </div>
                     </div>
                 @endif
@@ -171,34 +292,33 @@
                     <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
                         <span>🔍</span> Pencarian & Filter
                     </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-                        <form method="GET" action="{{ route('borrowings.index') }}" class="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold text-gray-600 dark:text-gray-400 mb-2">STATUS</label>
-                                <select name="status" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    <option value="">Semua Status</option>
-                                    <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>⏳ Menunggu Persetujuan</option>
-                                    <option value="approved" {{ request('status') === 'approved' ? 'selected' : '' }}>📖 Sedang Dipinjam</option>
-                                    <option value="returned" {{ request('status') === 'returned' ? 'selected' : '' }}>✓ Dikembalikan</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-600 dark:text-gray-400 mb-2">PENCARIAN</label>
-                                <input type="text" name="search" placeholder="Cari buku atau peminjam..." value="{{ request('search') }}" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <button type="submit" class="w-full px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition flex items-center justify-center gap-2">
-                                    <span>🔍</span> Cari
-                                </button>
-                            </div>
-                        </form>
-                        
+                    <form method="GET" action="{{ route('borrowings.index') }}" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 dark:text-gray-400 mb-2">STATUS</label>
+                            <select name="status" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Semua Status</option>
+                                <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>⏳ Menunggu Persetujuan</option>
+                                <option value="approved" {{ request('status') === 'approved' ? 'selected' : '' }}>📖 Sedang Dipinjam</option>
+                                <option value="returned" {{ request('status') === 'returned' ? 'selected' : '' }}>✓ Dikembalikan</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-600 dark:text-gray-400 mb-2">PENCARIAN</label>
+                            <input type="text" name="search" placeholder="Cari buku atau peminjam..." value="{{ request('search') }}" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="flex flex-col justify-end">
+                            <button type="submit" class="w-full px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition flex items-center justify-center gap-2">
+                                <span>🔍</span> Cari
+                            </button>
+                        </div>
                         @if(auth()->user()->isUser())
-                            <a href="{{ route('borrowings.create') }}" class="w-full md:w-auto px-4 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition flex items-center justify-center gap-2">
-                                <span>➕</span> Pinjam Buku
-                            </a>
+                            <div class="flex flex-col justify-end">
+                                <a href="{{ route('borrowings.create') }}" class="w-full px-4 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition flex items-center justify-center gap-2">
+                                    <span>➕</span> Pinjam Buku
+                                </a>
+                            </div>
                         @endif
-                    </div>
+                    </form>
                 </div>
             </div>
 

@@ -117,11 +117,10 @@
                     </p>
                 </div>
 
-                <form method="POST" action="{{ route('fines.mark-paid', $fine) }}" class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
+                <form method="POST" action="{{ route('fines.mark-paid', $fine) }}" class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6" data-confirm="Tandai pelanggaran ini sebagai terselesaikan?">
                     @csrf
                     <button type="submit" 
-                            class="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 px-4 rounded-lg transition shadow-sm hover:shadow-md"
-                            onclick="return confirm('Tandai pelanggaran ini sebagai terselesaikan?')">
+                            class="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 px-4 rounded-lg transition shadow-sm hover:shadow-md">
                         ✓ Tandai Sebagai Terselesaikan
                     </button>
                 </form>

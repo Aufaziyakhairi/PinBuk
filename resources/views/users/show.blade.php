@@ -111,7 +111,7 @@
                             🗑️ Hapus (Admin)
                         </button>
                     @else
-                        <form method="POST" action="{{ route('users.destroy', $user) }}" class="inline" onsubmit="return confirm('Yakin ingin menghapus user ini? Semua data akan hilang.')">
+                        <form method="POST" action="{{ route('users.destroy', $user) }}" class="inline" data-confirm="Yakin ingin menghapus user ini? Semua data akan hilang.">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="inline-flex items-center gap-2 px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition font-medium">

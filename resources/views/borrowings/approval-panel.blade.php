@@ -82,7 +82,7 @@
                                         </form>
 
                                         <!-- Reject Form -->
-                                        <form method="POST" action="{{ route('borrowings.update', $borrowing) }}" class="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 border-l-4 border-red-500" onsubmit="return confirm('Yakin ingin menolak permintaan ini?')">
+                                        <form method="POST" action="{{ route('borrowings.update', $borrowing) }}" class="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 border-l-4 border-red-500" data-confirm="Yakin ingin menolak permintaan ini?">
                                             @csrf
                                             @method('PUT')
                                             <input type="hidden" name="status" value="rejected">

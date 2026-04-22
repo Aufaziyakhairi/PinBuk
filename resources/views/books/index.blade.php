@@ -81,10 +81,10 @@
                                         <a href="{{ route('books.edit', $book) }}" class="text-yellow-600 dark:text-yellow-400 hover:underline">
                                             Ubah
                                         </a>
-                                        <form method="POST" action="{{ route('books.destroy', $book) }}" class="inline">
+                                        <form method="POST" action="{{ route('books.destroy', $book) }}" class="inline" data-confirm="Yakin ingin menghapus?">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-600 dark:text-red-400 hover:underline" onclick="return confirm('Yakin ingin menghapus?')">
+                                            <button type="submit" class="text-red-600 dark:text-red-400 hover:underline">
                                                 Hapus
                                             </button>
                                         </form>
