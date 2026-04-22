@@ -1,0 +1,291 @@
+
+  [39;41;1m FAIL [39;49;22m[39m Tests\Feature\BookBorrowingSystemTest[39m
+  [31;1m⨯[39;22m[90m [39m[90muser can view books list[39m
+  [31;1m⨯[39;22m[90m [39m[90madmin can access book management[39m
+  [31;1m⨯[39;22m[90m [39m[90muser cannot create book[39m
+  [31;1m⨯[39;22m[90m [39m[90madmin can create book[39m
+  [31;1m⨯[39;22m[90m [39m[90muser can borrow book[39m
+  [31;1m⨯[39;22m[90m [39m[90mavailable quantity decreases when book is borrowed[39m
+  [31;1m⨯[39;22m[90m [39m[90muser can return book[39m
+  [31;1m⨯[39;22m[90m [39m[90mfine is created for overdue book[39m
+  [31;1m⨯[39;22m[90m [39m[90mfine amount is calculated correctly[39m
+  [31;1m⨯[39;22m[90m [39m[90muser can view their fines[39m
+  [31;1m⨯[39;22m[90m [39m[90muser cannot see other users fines[39m
+  [31;1m⨯[39;22m[90m [39m[90madmin can see all fines[39m
+  [31;1m⨯[39;22m[90m [39m[90madmin can mark fine as paid[39m
+  [31;1m⨯[39;22m[90m [39m[90mdashboard shows admin stats[39m
+  [31;1m⨯[39;22m[90m [39m[90mdashboard shows user loans[39m
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m u… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m a… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m u… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m a… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m u… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m a… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m u… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m f… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m f… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m u… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m u… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m a… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m a… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m d… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m d… [41;1m BadMethodCallException [49;22m  
+[39;1m  Call to undefined method App\Models\Book::factory()[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
+    [90m 63[0m[90m▕ [0m[90;3m     * @throws \BadMethodCallException[0m
+    [90m 64[0m[90m▕ [0m[90;3m     */[0m
+    [90m 65[0m[90m▕ [0m[90;3m    [0m[35;1mprotected static function [0m[39;1mthrowBadMethodCallException[0m[35;1m([0m[39;1m$method[0m[35;1m)[0m
+    [90m 66[0m[90m▕ [0m[35;1m    {[0m
+[31;1m  ➜ [0m[3;1m 67[0m[90m▕ [0m[35;1m        throw new [0m[39;1mBadMethodCallException[0m[35;1m([0m[39;1msprintf[0m[35;1m([0m
+    [90m 68[0m[90m▕ [0m[35;1m            [0m[37m'Call to undefined method %s::%s()'[0m[35;1m, static::class, [0m[39;1m$method[0m
+    [90m 69[0m[90m▕ [0m[39;1m        [0m[35;1m));[0m
+    [90m 70[0m[90m▕ [0m[35;1m    }[0m
+    [90m 71[0m[90m▕ [0m[35;1m}[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m67[39;22m
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39;22m:[39;1m36[39;22m
+
+
+  [90mTests:[39m    [31;1m15 failed[39;22m[90m (0 assertions)[39m
+  [90mDuration:[39m [39m0.95s[39m
+

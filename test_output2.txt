@@ -1,0 +1,187 @@
+
+  [39;41;1m FAIL [39;49;22m[39m Tests\Feature\BookBorrowingSystemTest[39m
+  [31;1m⨯[39;22m[90m [39m[90muser can view books list[39m[90m                                            [39m [90m0.49s[39m  
+  [32;1m✓[39;22m[90m [39m[90madmin can access book management[39m[90m                                    [39m [90m0.06s[39m  
+  [31;1m⨯[39;22m[90m [39m[90muser cannot create book[39m[90m                                             [39m [90m0.03s[39m  
+  [32;1m✓[39;22m[90m [39m[90madmin can create book[39m[90m                                               [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90muser can borrow book[39m[90m                                                [39m [90m0.03s[39m  
+  [32;1m✓[39;22m[90m [39m[90mavailable quantity decreases when book is borrowed[39m[90m                  [39m [90m0.02s[39m  
+  [31;1m⨯[39;22m[90m [39m[90muser can return book[39m[90m                                                [39m [90m0.03s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mfine is created for overdue book[39m[90m                                    [39m [90m0.04s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mfine amount is calculated correctly[39m[90m                                 [39m [90m0.03s[39m  
+  [31;1m⨯[39;22m[90m [39m[90muser can view their fines[39m[90m                                           [39m [90m0.03s[39m  
+  [31;1m⨯[39;22m[90m [39m[90muser cannot see other users fines[39m[90m                                   [39m [90m0.03s[39m  
+  [31;1m⨯[39;22m[90m [39m[90madmin can see all fines[39m[90m                                             [39m [90m0.08s[39m  
+  [31;1m⨯[39;22m[90m [39m[90madmin can mark fine as paid[39m[90m                                         [39m [90m0.03s[39m  
+  [32;1m✓[39;22m[90m [39m[90mdashboard shows admin stats[39m[90m                                         [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mdashboard shows user loans[39m[90m                                          [39m [90m0.05s[39m  
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m user can view books list     
+[39;1m  Expected response status code [200] but received 302.
+Failed asserting that 302 is identical to 200.[39;22m
+
+  at [32mtests\Feature\BookBorrowingSystemTest.php[39m:[32m39[39m
+    [90m 35[0m[90m▕ [0m[35;1m    {[0m
+    [90m 36[0m[90m▕ [0m[35;1m        [0m[39;1m$response [0m[35;1m= [0m[39;1m$this[0m[35;1m->[0m[39;1mactingAs[0m[35;1m([0m[39;1m$this[0m[35;1m->[0m[39;1muser[0m[35;1m)[0m
+    [90m 37[0m[90m▕ [0m[35;1m            ->[0m[39;1mget[0m[35;1m([0m[37m'/books'[0m[35;1m);[0m
+    [90m 38[0m[90m▕ [0m[35;1m        [0m
+[31;1m  ➜ [0m[3;1m 39[0m[90m▕ [0m[35;1m        [0m[39;1m$response[0m[35;1m->[0m[39;1massertStatus[0m[35;1m([0m[39;1m200[0m[35;1m);[0m
+    [90m 40[0m[90m▕ [0m[35;1m        [0m[39;1m$response[0m[35;1m->[0m[39;1massertSee[0m[35;1m([0m[37m'Test Book'[0m[35;1m);[0m
+    [90m 41[0m[90m▕ [0m[35;1m    }[0m
+    [90m 42[0m[90m▕ [0m
+    [90m 43[0m[90m▕ [0m[35;1m    public function [0m[39;1mtest_admin_can_access_book_management[0m[35;1m()[0m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m user cannot create book      
+[39;1m  Expected response status code [403] but received 302.
+Failed asserting that 302 is identical to 403.[39;22m
+
+  at [32mtests\Feature\BookBorrowingSystemTest.php[39m:[32m61[39m
+    [90m 57[0m[90m▕ [0m[35;1m                [0m[37m'quantity' [0m[35;1m=> [0m[39;1m3[0m[35;1m,[0m
+    [90m 58[0m[90m▕ [0m[35;1m                [0m[37m'status' [0m[35;1m=> [0m[37m'ready'[0m[35;1m,[0m
+    [90m 59[0m[90m▕ [0m[35;1m            ]);[0m
+    [90m 60[0m[90m▕ [0m[35;1m        [0m
+[31;1m  ➜ [0m[3;1m 61[0m[90m▕ [0m[35;1m        [0m[39;1m$response[0m[35;1m->[0m[39;1massertStatus[0m[35;1m([0m[39;1m403[0m[35;1m);[0m
+    [90m 62[0m[90m▕ [0m[35;1m    }[0m
+    [90m 63[0m[90m▕ [0m
+    [90m 64[0m[90m▕ [0m[35;1m    public function [0m[39;1mtest_admin_can_create_book[0m[35;1m()[0m
+    [90m 65[0m[90m▕ [0m[35;1m    {[0m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m user can return book         
+[39;1m  Failed asserting that null is not null.[39;22m
+
+  at [32mtests\Feature\BookBorrowingSystemTest.php[39m:[32m125[39m
+    [90m121[0m[90m▕ [0m[35;1m            ]);[0m
+    [90m122[0m[90m▕ [0m[35;1m        [0m
+    [90m123[0m[90m▕ [0m[35;1m        [0m[39;1m$response[0m[35;1m->[0m[39;1massertStatus[0m[35;1m([0m[39;1m302[0m[35;1m);[0m
+    [90m124[0m[90m▕ [0m[35;1m        [0m[39;1m$borrowing[0m[35;1m->[0m[39;1mrefresh[0m[35;1m();[0m
+[31;1m  ➜ [0m[3;1m125[0m[90m▕ [0m[35;1m        [0m[39;1m$this[0m[35;1m->[0m[39;1massertNotNull[0m[35;1m([0m[39;1m$borrowing[0m[35;1m->[0m[39;1mreturned_at[0m[35;1m);[0m
+    [90m126[0m[90m▕ [0m[35;1m    }[0m
+    [90m127[0m[90m▕ [0m
+    [90m128[0m[90m▕ [0m[35;1m    public function [0m[39;1mtest_fine_is_created_for_overdue_book[0m[35;1m()[0m
+    [90m129[0m[90m▕ [0m[35;1m    {[0m
+
+  [33m1   [39m[39;1mtests\Feature\BookBorrowingSystemTest.php[39;22m:[39;1m125[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m fine is created for overd…   
+[39;1m  Failed asserting that a row in the table [fines] matches the attributes {
+    "user_id": 2,
+    "borrowing_id": 1
+}.
+
+The table is empty.[39;22m
+
+  at [32mtests\Feature\BookBorrowingSystemTest.php[39m:[32m146[39m
+    [90m142[0m[90m▕ [0m[35;1m            ->[0m[39;1mpatch[0m[35;1m([0m[37m'/borrowings/' [0m[35;1m. [0m[39;1m$borrowing[0m[35;1m->[0m[39;1mid[0m[35;1m, [[0m
+    [90m143[0m[90m▕ [0m[35;1m                [0m[37m'returned_at' [0m[35;1m=> [0m[39;1mnow[0m[35;1m(),[0m
+    [90m144[0m[90m▕ [0m[35;1m            ]);[0m
+    [90m145[0m[90m▕ [0m[35;1m        [0m
+[31;1m  ➜ [0m[3;1m146[0m[90m▕ [0m[35;1m        [0m[39;1m$this[0m[35;1m->[0m[39;1massertDatabaseHas[0m[35;1m([0m[37m'fines'[0m[35;1m, [[0m
+    [90m147[0m[90m▕ [0m[35;1m            [0m[37m'user_id' [0m[35;1m=> [0m[39;1m$this[0m[35;1m->[0m[39;1muser[0m[35;1m->[0m[39;1mid[0m[35;1m,[0m
+    [90m148[0m[90m▕ [0m[35;1m            [0m[37m'borrowing_id' [0m[35;1m=> [0m[39;1m$borrowing[0m[35;1m->[0m[39;1mid[0m[35;1m,[0m
+    [90m149[0m[90m▕ [0m[35;1m        ]);[0m
+    [90m150[0m[90m▕ [0m[35;1m    }[0m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m fine amount is calculated…   
+[39;1m  Failed asserting that null is not null.[39;22m
+
+  at [32mtests\Feature\BookBorrowingSystemTest.php[39m:[32m173[39m
+    [90m169[0m[90m▕ [0m[35;1m            ]);[0m
+    [90m170[0m[90m▕ [0m[35;1m        [0m
+    [90m171[0m[90m▕ [0m[35;1m        [0m[39;1m$fine [0m[35;1m= [0m[39;1mFine[0m[35;1m::[0m[39;1mwhere[0m[35;1m([0m[37m'borrowing_id'[0m[35;1m, [0m[39;1m$borrowing[0m[35;1m->[0m[39;1mid[0m[35;1m)->[0m[39;1mfirst[0m[35;1m();[0m
+    [90m172[0m[90m▕ [0m[35;1m        [0m
+[31;1m  ➜ [0m[3;1m173[0m[90m▕ [0m[35;1m        [0m[39;1m$this[0m[35;1m->[0m[39;1massertNotNull[0m[35;1m([0m[39;1m$fine[0m[35;1m);[0m
+    [90m174[0m[90m▕ [0m[35;1m        [0m[39;1m$this[0m[35;1m->[0m[39;1massertEquals[0m[35;1m([0m[39;1m$expectedAmount[0m[35;1m, [0m[39;1m$fine[0m[35;1m->[0m[39;1mamount[0m[35;1m);[0m
+    [90m175[0m[90m▕ [0m[35;1m    }[0m
+    [90m176[0m[90m▕ [0m
+    [90m177[0m[90m▕ [0m[35;1m    public function [0m[39;1mtest_user_can_view_their_fines[0m[35;1m()[0m
+
+  [33m1   [39m[39;1mtests\Feature\BookBorrowingSystemTest.php[39;22m:[39;1m173[39;22m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m user can…  [41;1m QueryException [49;22m  
+[39;1m  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: fines.issued_at (Connection: sqlite, Database: :memory:, SQL: insert into "fines" ("user_id", "borrowing_id", "amount", "days_late", "status", "created_at", "updated_at") values (2, 1, 25000, 11, unpaid, 2026-04-06 15:15:08, 2026-04-08 12:09:00))[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39m:[32m841[39m
+    [90m837[0m[90m▕ [0m[35;1m            [0m[39;1m$exceptionType [0m[35;1m= ([0m[39;1m$isUniqueConstraintError [0m[35;1m= [0m[39;1m$this[0m[35;1m->[0m[39;1misUniqueConstraintError[0m[35;1m([0m[39;1m$e[0m[35;1m))[0m
+    [90m838[0m[90m▕ [0m[35;1m                ? [0m[39;1mUniqueConstraintViolationException[0m[35;1m::class[0m
+    [90m839[0m[90m▕ [0m[35;1m                : [0m[39;1mQueryException[0m[35;1m::class;[0m
+    [90m840[0m[90m▕ [0m
+[31;1m  ➜ [0m[3;1m841[0m[90m▕ [0m[35;1m            [0m[39;1m$exception [0m[35;1m= new [0m[39;1m$exceptionType[0m[35;1m([0m
+    [90m842[0m[90m▕ [0m[35;1m                [0m[39;1m$this[0m[35;1m->[0m[39;1mgetNameWithReadWriteType[0m[35;1m(),[0m
+    [90m843[0m[90m▕ [0m[35;1m                [0m[39;1m$query[0m[35;1m,[0m
+    [90m844[0m[90m▕ [0m[35;1m                [0m[39;1m$this[0m[35;1m->[0m[39;1mprepareBindings[0m[35;1m([0m[39;1m$bindings[0m[35;1m),[0m
+    [90m845[0m[90m▕ [0m[35;1m                [0m[39;1m$e[0m[35;1m,[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39;22m:[39;1m841[39;22m
+
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39;22m:[39;1m587[39;22m
+  [90m    NunoMaduro\Collision\Exceptions\TestException::("SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: fines.issued_at")[39m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m user cann… [41;1m QueryException [49;22m  
+[39;1m  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: fines.issued_at (Connection: sqlite, Database: :memory:, SQL: insert into "fines" ("user_id", "borrowing_id", "amount", "days_late", "status", "created_at", "updated_at") values (3, 1, 25000, 1, unpaid, 2026-04-07 11:32:33, 2026-04-08 12:09:00))[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39m:[32m841[39m
+    [90m837[0m[90m▕ [0m[35;1m            [0m[39;1m$exceptionType [0m[35;1m= ([0m[39;1m$isUniqueConstraintError [0m[35;1m= [0m[39;1m$this[0m[35;1m->[0m[39;1misUniqueConstraintError[0m[35;1m([0m[39;1m$e[0m[35;1m))[0m
+    [90m838[0m[90m▕ [0m[35;1m                ? [0m[39;1mUniqueConstraintViolationException[0m[35;1m::class[0m
+    [90m839[0m[90m▕ [0m[35;1m                : [0m[39;1mQueryException[0m[35;1m::class;[0m
+    [90m840[0m[90m▕ [0m
+[31;1m  ➜ [0m[3;1m841[0m[90m▕ [0m[35;1m            [0m[39;1m$exception [0m[35;1m= new [0m[39;1m$exceptionType[0m[35;1m([0m
+    [90m842[0m[90m▕ [0m[35;1m                [0m[39;1m$this[0m[35;1m->[0m[39;1mgetNameWithReadWriteType[0m[35;1m(),[0m
+    [90m843[0m[90m▕ [0m[35;1m                [0m[39;1m$query[0m[35;1m,[0m
+    [90m844[0m[90m▕ [0m[35;1m                [0m[39;1m$this[0m[35;1m->[0m[39;1mprepareBindings[0m[35;1m([0m[39;1m$bindings[0m[35;1m),[0m
+    [90m845[0m[90m▕ [0m[35;1m                [0m[39;1m$e[0m[35;1m,[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39;22m:[39;1m841[39;22m
+
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39;22m:[39;1m587[39;22m
+  [90m    NunoMaduro\Collision\Exceptions\TestException::("SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: fines.issued_at")[39m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m admin can… [41;1m QueryException [49;22m  
+[39;1m  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: fines.issued_at (Connection: sqlite, Database: :memory:, SQL: insert into "fines" ("user_id", "borrowing_id", "amount", "days_late", "status", "created_at", "updated_at") values (2, 1, 25000, 22, unpaid, 2026-04-06 04:26:03, 2026-04-08 12:09:00))[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39m:[32m841[39m
+    [90m837[0m[90m▕ [0m[35;1m            [0m[39;1m$exceptionType [0m[35;1m= ([0m[39;1m$isUniqueConstraintError [0m[35;1m= [0m[39;1m$this[0m[35;1m->[0m[39;1misUniqueConstraintError[0m[35;1m([0m[39;1m$e[0m[35;1m))[0m
+    [90m838[0m[90m▕ [0m[35;1m                ? [0m[39;1mUniqueConstraintViolationException[0m[35;1m::class[0m
+    [90m839[0m[90m▕ [0m[35;1m                : [0m[39;1mQueryException[0m[35;1m::class;[0m
+    [90m840[0m[90m▕ [0m
+[31;1m  ➜ [0m[3;1m841[0m[90m▕ [0m[35;1m            [0m[39;1m$exception [0m[35;1m= new [0m[39;1m$exceptionType[0m[35;1m([0m
+    [90m842[0m[90m▕ [0m[35;1m                [0m[39;1m$this[0m[35;1m->[0m[39;1mgetNameWithReadWriteType[0m[35;1m(),[0m
+    [90m843[0m[90m▕ [0m[35;1m                [0m[39;1m$query[0m[35;1m,[0m
+    [90m844[0m[90m▕ [0m[35;1m                [0m[39;1m$this[0m[35;1m->[0m[39;1mprepareBindings[0m[35;1m([0m[39;1m$bindings[0m[35;1m),[0m
+    [90m845[0m[90m▕ [0m[35;1m                [0m[39;1m$e[0m[35;1m,[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39;22m:[39;1m841[39;22m
+
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39;22m:[39;1m587[39;22m
+  [90m    NunoMaduro\Collision\Exceptions\TestException::("SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: fines.issued_at")[39m
+
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\BookBorrowingSystemTest[22m [90m>[39m admin can… [41;1m QueryException [49;22m  
+[39;1m  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: fines.issued_at (Connection: sqlite, Database: :memory:, SQL: insert into "fines" ("user_id", "borrowing_id", "amount", "days_late", "status", "created_at", "updated_at") values (2, 1, 25000, 7, unpaid, 2026-04-01 02:00:51, 2026-04-08 12:09:00))[39;22m
+
+  at [32mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39m:[32m841[39m
+    [90m837[0m[90m▕ [0m[35;1m            [0m[39;1m$exceptionType [0m[35;1m= ([0m[39;1m$isUniqueConstraintError [0m[35;1m= [0m[39;1m$this[0m[35;1m->[0m[39;1misUniqueConstraintError[0m[35;1m([0m[39;1m$e[0m[35;1m))[0m
+    [90m838[0m[90m▕ [0m[35;1m                ? [0m[39;1mUniqueConstraintViolationException[0m[35;1m::class[0m
+    [90m839[0m[90m▕ [0m[35;1m                : [0m[39;1mQueryException[0m[35;1m::class;[0m
+    [90m840[0m[90m▕ [0m
+[31;1m  ➜ [0m[3;1m841[0m[90m▕ [0m[35;1m            [0m[39;1m$exception [0m[35;1m= new [0m[39;1m$exceptionType[0m[35;1m([0m
+    [90m842[0m[90m▕ [0m[35;1m                [0m[39;1m$this[0m[35;1m->[0m[39;1mgetNameWithReadWriteType[0m[35;1m(),[0m
+    [90m843[0m[90m▕ [0m[35;1m                [0m[39;1m$query[0m[35;1m,[0m
+    [90m844[0m[90m▕ [0m[35;1m                [0m[39;1m$this[0m[35;1m->[0m[39;1mprepareBindings[0m[35;1m([0m[39;1m$bindings[0m[35;1m),[0m
+    [90m845[0m[90m▕ [0m[35;1m                [0m[39;1m$e[0m[35;1m,[0m
+
+  [33m1   [39m[39;1mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39;22m:[39;1m841[39;22m
+
+  [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39;22m:[39;1m587[39;22m
+  [90m    NunoMaduro\Collision\Exceptions\TestException::("SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: fines.issued_at")[39m
+
+
+  [90mTests:[39m    [31;1m9 failed[39;22m[90m,[39m[39m [39m[32;1m6 passed[39;22m[90m (15 assertions)[39m
+  [90mDuration:[39m [39m1.40s[39m
+
