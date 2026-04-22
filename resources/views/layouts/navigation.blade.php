@@ -22,6 +22,9 @@
                             <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.*')">
                                 {{ __('Manajemen Buku') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                                {{ __('Manajemen User') }}
+                            </x-nav-link>
                             <x-nav-link :href="route('fines.index')" :active="request()->routeIs('fines.*')">
                                 {{ __('Manajemen Denda') }}
                             </x-nav-link>
@@ -104,6 +107,9 @@
                 @if(auth()->user()->isAdmin())
                     <x-responsive-nav-link :href="route('books.index')" :active="request()->routeIs('books.*')">
                         {{ __('Manajemen Buku') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                        {{ __('Manajemen User') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('fines.index')" :active="request()->routeIs('fines.*')">
                         {{ __('Manajemen Denda') }}

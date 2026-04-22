@@ -18,7 +18,23 @@ class UserController extends Controller
             abort(403);
         }
 
-        $users = User::latest()->paginate(15);
+        $query = User::query();
+
+        // Search by name or email
+        if (request('search')) {
+            $search = request('search');
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by role
+        if (request('role')) {
+            $query->where('role', request('role'));
+        }
+
+        $users = $query->latest()->paginate(15);
         return view('users.index', compact('users'));
     }
 
@@ -118,6 +134,11 @@ class UserController extends Controller
 
         if ($user->id === auth()->id()) {
             return back()->with('error', 'Tidak dapat menghapus user sendiri');
+        }
+
+        // Prevent deleting other admin accounts
+        if ($user->isAdmin()) {
+            return back()->with('error', 'Tidak dapat menghapus akun admin. Ubah role menjadi user terlebih dahulu.');
         }
 
         $user->delete();

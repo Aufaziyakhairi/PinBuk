@@ -15,6 +15,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/analytics', [DashboardController::class, 'analytics'])->name('analytics')->middleware('admin');
 
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -43,15 +44,17 @@ Route::middleware('auth')->group(function () {
         ->middleware('admin');
 
     // Fine routes (All authenticated users)
+    Route::middleware('admin')->group(function () {
+        Route::get('fines/create', [FineController::class, 'create'])->name('fines.create');
+        Route::post('fines', [FineController::class, 'store'])->name('fines.store');
+        Route::get('fines/reports/monthly', [FineController::class, 'monthlyReport'])->name('fines.monthly-report');
+    });
+    
     Route::resource('fines', FineController::class)->only(['index', 'show', 'destroy']);
-    Route::get('fines/create', [FineController::class, 'create'])->name('fines.create')->middleware('admin');
-    Route::post('fines', [FineController::class, 'store'])->name('fines.store')->middleware('admin');
     Route::post('fines/{fine}/mark-as-paid', [FineController::class, 'markAsPaid'])->name('fines.mark-paid');
 
     // Monthly reports for admin
-    Route::get('fines/reports/monthly', [FineController::class, 'monthlyReport'])
-        ->name('fines.monthly-report')
-        ->middleware('admin');
+    // (moved to middleware group above)
 });
 
 require __DIR__.'/auth.php';
